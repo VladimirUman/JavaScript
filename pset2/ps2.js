@@ -1,5 +1,5 @@
 var fs = require('fs');
-var fname = 'a_example.in';
+var fname = 'example.in';
 
 var ridesInfo = fs.readFileSync(fname).toString().split('\n');
 var ways = [];
@@ -66,5 +66,25 @@ for (s = 0; s < numberOfSteps; s++) {
   }
 }
 
-console.log(cars);
-//console.log(ways)
+var carResult = [];
+for (i = 0; i < cars.length; i++) {
+  carResult.push('\n' + cars[i].carId);
+  carResult.push(cars[i].orders.join(' '));
+}
+
+result = carResult.join(' ').slice(1);
+console.log(result);
+var fname = 'example.out';
+fs.open(fname, "w+", 0644, function(err, file_handle) {
+	if (!err) {
+	    fs.write(file_handle, result, null, 'ascii', function(err, written) {
+	        if (!err) {
+	            console.log("Succesfully writen");
+	        } else {
+	            console.log("Error!");
+	        }
+	    });
+	} else {
+		console.log("Open file error!");
+	}
+});
