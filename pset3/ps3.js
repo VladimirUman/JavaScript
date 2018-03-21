@@ -1,8 +1,6 @@
 var http = require('http');
 var fs = require('fs');
 var html = fs.readFileSync('index.html');
-var count = 0;
-//var logs = ('line: ' + count + '\n');
 var logFile = fs.openSync('log.txt', "w", 0644);
 
 var server = http.createServer(function(req, res) {
@@ -10,8 +8,8 @@ var server = http.createServer(function(req, res) {
   res.writeHead(200, { 'Content-Type': 'text/html' });
   res.write(html);
   res.end();
-  count += 1;
-  var logs = 'line: ' + count + '\n'
+  var now = new Date();
+  var logs = now + '; Method: ' + req.method + '; Brouser: ' + req.rawHeaders[3] + ';\n'
   fs.writeSync(logFile, logs, null, 'ascii');
 });
 
