@@ -1,9 +1,0 @@
-extends layout
-
-block content
-  h1 Users
-  ul
-    each user in users.length ? users : ['There are no users']
-      li= user.split(';')[0] + ' ' + user.split(';')[1]
-
-  a(href="/users/add") New user
