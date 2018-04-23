@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1 Users
+  table(border="1" width="80%")
+    th(width="10%") Id
+    th(width="30%") Name
+    th(width="30%") Surname
+    th(width="30%") Account
+    each user in useros.length ? useros : ['There are no users']
+      tr
+        td= user.user_id
+        td= user.name
+        td= user.surname
+        td= user.twitter
+
+  a(href="/add") New user

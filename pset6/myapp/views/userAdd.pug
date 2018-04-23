@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  form(action="/users/add" method="post")
+    p User name:
+    input(name="firstname" type="text")
+    p User surname:
+    input(name="lastname" type="text")
+    p Tweeter username:
+    input(name="twitname" type="text")
+    p
+    button(type="submit") save
+  p
+  a(href="/users") Back to users
